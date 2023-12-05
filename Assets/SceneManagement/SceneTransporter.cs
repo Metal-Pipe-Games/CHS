@@ -12,7 +12,20 @@ public class SceneTransporter : MonoBehaviour
     static string TargetSceneName = "";
     static int TargetSceneIndex = 2;
     static Sprite TargetPreview;
+    bool done = false;
+    public bool child = true;
     AsyncOperation loadingScene;
+
+    public enum TransportMode
+    {
+        Entering,
+        Leaving,
+        None
+    }
+
+    public TransportMode mode = TransportMode.Entering;
+
+    static SceneTransporter activeTransporter;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +33,20 @@ public class SceneTransporter : MonoBehaviour
         if(TargetSceneIndex != -1)loadingScene = SceneManager.LoadSceneAsync(TargetSceneIndex);
         else if(TargetSceneName != "") loadingScene = SceneManager.LoadSceneAsync(TargetSceneName);
         if (TargetPreview) preview.sprite = TargetPreview;
+        if (!child)
+        {
+            DontDestroyOnLoad(this);
+            activeTransporter = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (loadingScene != null && !loadingScene.isDone)
+        if (done)
+        {
+
+        }else if (loadingScene != null && !loadingScene.isDone)
         {
             float progress = Mathf.Clamp01(loadingScene.progress / 0.9f);
             loadingBar.fillAmount = progress;
@@ -43,10 +64,6 @@ public class SceneTransporter : MonoBehaviour
         TargetSceneIndex = targetScene;
         LoadSelf();
     }
-    public static IEnumerator Delay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-    }
     public static void GoToScene(string targetScene, Sprite targetPreview)
     {
         TargetSceneName = targetScene;
@@ -61,9 +78,12 @@ public class SceneTransporter : MonoBehaviour
         LoadSelf();
     }
 
-    static AsyncOperation ownLoader;
     public static void LoadSelf()
     {
-        ownLoader = SceneManager.LoadSceneAsync(1);
+        if(!activeTransporter) SceneManager.LoadSceneAsync(1);
+        else
+        {
+            activeTransporter.Start();
+        }
     }
 }

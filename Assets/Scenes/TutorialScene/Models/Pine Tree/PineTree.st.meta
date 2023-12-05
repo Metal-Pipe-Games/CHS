@@ -2,14 +2,23 @@ fileFormatVersion: 2
 guid: 0cafd0bbc1c718644b2680b513721d13
 SpeedTreeImporter:
   externalObjects: {}
-  serializedVersion: 6
+  serializedVersion: 7
   mainColor: {r: 1, g: 1, b: 1, a: 1}
   hueVariation: {r: 1, g: 0.5, b: 0, a: 0.1}
   alphaTestRef: 0.33
+  enableHueVariation: 0
+  enableBumpMapping: 0
+  enableSubsurfaceScattering: 0
   bestWindQuality: 1
+  selectedWindQuality: 0
+  enableShadowCasting: 1
+  enableShadowReceiving: 1
+  enableLightProbes: 0
+  reflectionProbeEnumValue: 1
   hasBillboard: 0
   lODSettings:
-  - height: 0.5
+  - enableSettingOverride: 1
+    height: 0.7194568
     castShadows: 1
     receiveShadows: 1
     useLightProbes: 1
@@ -18,7 +27,8 @@ SpeedTreeImporter:
     enableHue: 1
     enableSubsurface: 1
     windQuality: 1
-  - height: 0.25
+  - enableSettingOverride: 1
+    height: 0.25
     castShadows: 1
     receiveShadows: 1
     useLightProbes: 1
@@ -27,7 +37,8 @@ SpeedTreeImporter:
     enableHue: 1
     enableSubsurface: 1
     windQuality: 1
-  - height: 0.027527481
+  - enableSettingOverride: 1
+    height: 0.027527481
     castShadows: 1
     receiveShadows: 1
     useLightProbes: 1
@@ -41,6 +52,7 @@ SpeedTreeImporter:
   billboardTransitionCrossFadeWidth: 0.25
   fadeOutWidth: 0.25
   scaleFactor: 0.3048
+  unitConversionEnumValue: 1
   motionVectorModeEnumValue: 1
   materialVersion: 3
   materialLocation: 1

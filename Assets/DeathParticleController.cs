@@ -14,6 +14,9 @@ public class DeathParticleController : MonoBehaviour
     public int signPassCount = 1;
     public float threshold = 0.5f;
     public Bounds Bounds;
+
+    public Material[] materials;
+    public float delay = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +39,24 @@ public class DeathParticleController : MonoBehaviour
         skinnedMeshRenderer.BakeMesh(mesh);
         Baker.BakeSDF();
         vfx.SetTexture("SDFData", Baker.SdfTexture);
-        skinnedMeshRenderer.enabled = false;
         vfx.SendEvent("OnDeath");
+        Invoke(nameof(DisableMeshRenderer), delay);
+
+        foreach(var material in materials)
+        {
+            material.SetFloat("_StartTime", Time.time);
+            material.SetFloat("_Delay", delay);
+            material.SetFloat("_Enabled", 1.0f);
+        }
+    }
+
+    private void DisableMeshRenderer()
+    {
+        skinnedMeshRenderer.enabled = false;
+        foreach (var material in materials)
+        {
+            material.SetFloat("_Enabled", 0.0f);
+        }
     }
 
     private void OnDestroy()

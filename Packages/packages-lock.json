@@ -7,6 +7,13 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.limworks.urpssrpackage": {
+      "version": "https://github.com/JoshuaLim007/Unity-ScreenSpaceReflections-URP.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "353c5a037936bd747d82ba233781ff695fdac9c7"
+    },
     "com.unity.ai.navigation": {
       "version": "1.1.5",
       "depth": 0,

@@ -287,7 +287,7 @@ MonoBehaviour:
   toTransform:
     exposedName: 4247f11a0bd19b74ba7539ad97d4857d
     defaultValue: {fileID: 0}
-  strength: 1
+  strength: 0.86
   inverted: 0
 --- !u!114 &2111265188330047638
 MonoBehaviour:
@@ -307,7 +307,7 @@ MonoBehaviour:
   toTransform:
     exposedName: 22e930e07e17b28408ef9b80dc385ef7
     defaultValue: {fileID: 0}
-  strength: 0.59
+  strength: 1
   inverted: 0
 --- !u!114 &2291904080253465185
 MonoBehaviour:
@@ -441,22 +441,58 @@ MonoBehaviour:
     m_Start: 1.9333333333333333
     m_ClipIn: 0
     m_Asset: {fileID: 1528007995416442997}
-    m_Duration: 1.7333333333333332
+    m_Duration: 1.7499999999999998
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5182561470652215426}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: 0.9166666666666667
-    m_BlendOutDuration: 0.8166666666666664
+    m_BlendOutDuration: 0.6333333333333333
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -471,19 +507,37 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: MoveTransformClip
   - m_Version: 1
-    m_Start: 2.85
+    m_Start: 3.05
     m_ClipIn: 0
     m_Asset: {fileID: 2111265188330047638}
-    m_Duration: 1.233333333333333
+    m_Duration: 1.0333333333333332
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5182561470652215426}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 0.8166666666666664
+    m_BlendInDuration: 0.6333333333333333
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -567,10 +621,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 3.3833333333333333
+    m_Start: 2.35
     m_ClipIn: 0
     m_Asset: {fileID: -6117178562289154010}
-    m_Duration: 9.450000000000006
+    m_Duration: 10.483333333333338
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8004649925842558980}
     m_EaseInDuration: 0

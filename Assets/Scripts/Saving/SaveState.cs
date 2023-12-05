@@ -6,7 +6,7 @@ public class SaveState: ScriptableObject
     public SaveData SaveData;
 }
 [System.Serializable]
-public struct SaveData
+public class SaveData
 {
     [Header("Player Health")]
     public float health;
@@ -20,4 +20,12 @@ public struct SaveData
     public byte savePoint;
     public int levelFlags;
     public int[] aliveEnemies;
+    [Header("Save Data")]
+    public int playtime;
+}
+[System.Serializable]
+public class Save
+{
+    public string Name;
+    public SaveData data;
 }

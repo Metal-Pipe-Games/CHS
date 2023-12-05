@@ -9,7 +9,7 @@ public class SaveLoad
     public static void Save(SaveData data,string saveName)
     {
         BinaryFormatter formatter = new();
-        string path = Application.persistentDataPath + saveName + ".save";
+        string path = Path.Combine(Application.persistentDataPath,"saves", saveName + ".save");
 
         FileStream stream = new(path, FileMode.Create);
 
@@ -17,19 +17,19 @@ public class SaveLoad
         stream.Close();
     }
 
-    public static SaveData? Load(string saveName)
+    public static SaveData Load(string saveName)
     {
-        string path = Application.persistentDataPath + saveName + ".save";
+        string path = Path.Combine(Application.persistentDataPath, "saves", saveName + ".save");
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new();
             FileStream stream = new(path, FileMode.Open);
 
-            SaveData? data = formatter.Deserialize(stream) as SaveData?;
+            SaveData data = formatter.Deserialize(stream) as SaveData;
 
-            if (data.HasValue)
+            if (data != null)
             {
-                return data.Value;
+                return data;
             }
             else return null;
         }
@@ -38,8 +38,8 @@ public class SaveLoad
 
     public static void Delete(string saveName)
     {
-        string path = Application.persistentDataPath + saveName + ".save";
+        string path = Path.Combine(Application.persistentDataPath, "saves", saveName + ".save");
 
-        File.Delete(path);
+        if (File.Exists(path)) File.Delete(path);
     }
 }

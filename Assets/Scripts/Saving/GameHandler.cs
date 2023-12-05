@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
-    public static string saveName = "0";
+    public static string saveName = "";
+    public static Save save;
     public PlayerHealthController healthController;
     public ToolHandler toolHandler;
     public byte levelId;
@@ -20,9 +22,51 @@ public class GameHandler : MonoBehaviour
         healthController.permDamage = data.scars;
     }
 
-    public static void CreateSave(int count)
+    static string FindAvailableName()
     {
-        SaveLoad.Save(defaultSave.SaveData, "floppydisk_" + count);
+        string path = Path.Combine(Application.persistentDataPath,"saves");
+
+        string name = "";
+
+        for(int i = 0; name == ""; i++)
+        {
+            string n = "floppydisk_" + i;
+            if (!File.Exists(Path.Combine(path, n)))
+            {
+                name = n;
+            }
+        }
+
+        return name;
+    }
+
+    string[] GetFiles()
+    {
+        var path = Path.Combine(Application.persistentDataPath, "saves");
+        string[] files;
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+        files = Directory.GetFiles(path);
+        return files;
+    }
+
+    Save[] GetSaves()
+    {
+        return new Save[0];
+    }
+
+    public static void CreateSave()
+    {
+        string name = FindAvailableName();
+        saveName = name;
+        save = new Save()
+        {
+            Name=name,
+            data=defaultSave.SaveData
+        };
+        SaveLoad.Save(defaultSave.SaveData, name);
     }
 
     public void Save()
@@ -53,15 +97,27 @@ public class GameHandler : MonoBehaviour
 
     public static SaveData Load()
     {
-        SaveData? data = SaveLoad.Load(saveName);
+        SaveData data = SaveLoad.Load(saveName);
 
-        if (data.HasValue)
+        if (data != null)
         {
-            return data.Value;
+            return data;
         }
         else
         {
             throw new System.Exception("Unable to load save");
         }
+    }
+
+    public static Save Load(string name)
+    {
+        saveName = name;
+        var saveData = Load();
+        save = new Save()
+        {
+            Name = name,
+            data = saveData
+        };
+        return save;
     }
 }
